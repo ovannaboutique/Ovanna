@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
+:root{--g:#d7a84d;--l:#f2d58a;--c:#f7efe3}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#080706;color:var(--c);font-family:Montserrat,Arial,sans-serif}body{overflow:hidden}
+.app{position:relative;width:100vw;height:100dvh;min-height:560px;overflow:hidden;isolation:isolate;background:radial-gradient(circle at 50% 40%,#291b0d,#0a0805 60%,#050403)}
+.desktop-scene{position:absolute;z-index:-5;inset:-2%;background:url("./assets/fashion-hero.png") center/cover no-repeat;animation:zoom 15s ease-in-out infinite alternate}
+.mobile-fashion{display:none}.veil{position:absolute;z-index:-3;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(0,0,0,.48) 50%,rgba(0,0,0,.08)),linear-gradient(180deg,rgba(0,0,0,.18),transparent 65%,rgba(0,0,0,.55))}
+.stars{position:absolute;z-index:-2;inset:0;opacity:.25;pointer-events:none;background-image:radial-gradient(circle,#f5d47d 0 1px,transparent 1.5px);background-size:180px 180px;animation:stars 14s linear infinite}
+header{position:absolute;z-index:5;top:0;left:0;right:0;height:145px;display:flex;justify-content:center;align-items:center}
+.logo{width:235px;height:112px;object-fit:contain;filter:drop-shadow(0 7px 16px #000)}.label{position:absolute;right:5vw;font-size:7px;letter-spacing:4px;color:#cbbda8}.install{position:absolute;left:5vw;border:1px solid #d7a84d88;background:#09070499;color:var(--l);padding:10px 14px;border-radius:30px;font:500 8px Montserrat;letter-spacing:1.5px}.hidden{display:none!important}
+main{position:absolute;z-index:4;left:50%;top:54%;transform:translate(-50%,-50%);width:min(620px,44vw);text-align:center}.eyebrow{font-size:8px;letter-spacing:4px;color:var(--g);margin:0 0 9px}h1{font:500 clamp(44px,4.3vw,72px)/.86 "Cormorant Garamond",serif;margin:0;text-shadow:0 5px 25px #000;letter-spacing:-2px}h1 em{font-weight:500;color:var(--l)}.tagline{font-size:9px;letter-spacing:1.5px;line-height:1.7;margin:15px 0 21px;text-shadow:0 2px 9px #000}.tagline span{color:#bdb19f}
+nav{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}nav a{height:62px;display:grid;grid-template-columns:32px 1fr 15px;align-items:center;gap:8px;padding:0 11px;background:#080604c9;border:1px solid #d7a84d66;text-decoration:none;color:#f9eedb;text-align:left;backdrop-filter:blur(10px);transition:.25s}nav a:hover{transform:translateY(-4px);border-color:var(--l)}nav i{font-style:normal;width:29px;height:29px;border:1px solid #d7a84d77;border-radius:50%;display:grid;place-items:center;color:var(--l)}nav small{display:block;font:500 5px Montserrat;letter-spacing:1.2px;color:#9f927e;margin-bottom:3px}nav span{font:500 16px "Cormorant Garamond"}nav b{font-weight:400;color:var(--g)}
+footer{position:absolute;z-index:6;bottom:max(10px,env(safe-area-inset-bottom));left:0;right:0;text-align:center}footer a{display:inline-block;text-decoration:none;color:var(--l);font-size:8px;letter-spacing:1px;padding:7px 11px;background:#08060488;border-radius:30px;backdrop-filter:blur(7px)}footer span{color:#a99c89;margin-right:4px}
+@keyframes zoom{to{transform:scale(1.055)}}@keyframes stars{to{transform:translateY(-100px)}}
+
+/* REAL MOBILE LAYOUT: no composite text/logo/buttons from the source image */
+@media(max-width:600px){
+ body{overflow:hidden}.app{min-height:100dvh;height:100dvh}
+ .desktop-scene{display:none}
+ .mobile-fashion{display:block;position:absolute;z-index:-5;inset:0;background:radial-gradient(circle at 50% 35%,#39250f 0,#120c07 42%,#070504 76%)}
+ /* same fashion source, but only side crops are exposed */
+ .fashion-left,.fashion-right{position:absolute;top:105px;height:42vh;min-height:250px;max-height:370px;background-image:url("./assets/fashion-hero.png");background-repeat:no-repeat;background-size:auto 100%;filter:saturate(.92) contrast(1.04);animation:float 6s ease-in-out infinite}
+ .fashion-left{left:-1px;width:48%;background-position:left center;clip-path:polygon(0 0,100% 0,82% 100%,0 100%)}
+ .fashion-right{right:-1px;width:48%;background-position:right center;clip-path:polygon(0 0,100% 0,100% 100%,18% 100%);animation-delay:-2.5s}
+ .veil{background:linear-gradient(180deg,rgba(5,4,3,.02) 0,rgba(5,4,3,.08) 35%,#080604 56%,#080604 100%),linear-gradient(90deg,transparent,rgba(0,0,0,.35) 50%,transparent)}
+ header{height:104px;padding:5px 12px}.logo{width:145px;height:88px;max-width:145px;max-height:88px}.label{display:none}.install{left:10px;top:12px;padding:7px 9px;font-size:6px;letter-spacing:1px}
+ main{top:auto;bottom:54px;transform:translateX(-50%);width:100%;padding:0 18px}
+ .copy{margin-bottom:12px}.eyebrow{font-size:6px;letter-spacing:2.5px;margin-bottom:5px}
+ h1{font-size:37px;line-height:.84;letter-spacing:-1px}.tagline{font-size:7px;line-height:1.45;margin:9px 0 0;letter-spacing:1px}
+ nav{grid-template-columns:1fr;gap:5px;max-width:330px;margin:0 auto}nav a{height:45px;grid-template-columns:29px 1fr 14px;padding:0 10px;background:#090705e8}nav i{width:26px;height:26px;font-size:12px}nav span{font-size:14px}nav small{font-size:4.5px;margin-bottom:1px}
+ footer{bottom:max(6px,env(safe-area-inset-bottom))}footer a{font-size:7px;padding:5px 9px}
+ .stars{opacity:.18}
+}
+@media(max-width:380px){.fashion-left,.fashion-right{height:38vh}.logo{width:132px}h1{font-size:33px}nav{max-width:300px}}
+@media(max-height:680px) and (max-width:600px){.fashion-left,.fashion-right{top:85px;height:35vh;min-height:210px}.logo{height:72px}header{height:85px}main{bottom:45px}h1{font-size:31px}.copy{margin-bottom:8px}.tagline{margin-top:6px}nav a{height:40px}}
+@keyframes float{50%{transform:translateY(-7px) scale(1.015)}}@media(prefers-reduced-motion:reduce){.desktop-scene,.stars,.fashion-left,.fashion-right{animation:none}}
+
+/* v7 spacing + OVANNA footer */
+footer{bottom:max(8px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:7px}
+.ovanna-footer{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;text-shadow:0 2px 8px #000}
+.ovanna-footer strong{font:500 12px "Cormorant Garamond",serif;letter-spacing:2.4px;color:#e6c673}
+.ovanna-footer>span{font:400 6px Montserrat;letter-spacing:1.6px;color:#a99b86}
+.ovanna-footer small{font:400 5px Montserrat;letter-spacing:1px;color:#70675b}
+.powered{margin-top:1px!important}
+@media(max-width:600px){
+ main{bottom:116px}
+ .copy{margin-bottom:17px}
+ .eyebrow{margin-bottom:7px}
+ h1{margin-bottom:16px}
+ .tagline{margin-top:0!important;margin-bottom:0!important}
+ footer{bottom:max(7px,env(safe-area-inset-bottom));gap:5px}
+ .ovanna-footer{gap:2px}
+ .ovanna-footer strong{font-size:10px;letter-spacing:2px}
+ .ovanna-footer>span{font-size:5px}
+ .ovanna-footer small{font-size:4.5px}
+ footer .powered{font-size:7px;padding:4px 8px}
+}
+@media(max-height:680px) and (max-width:600px){
+ main{bottom:101px}
+ h1{margin-bottom:12px}
+ .copy{margin-bottom:11px}
+ .ovanna-footer>span,.ovanna-footer small{display:none}
+}
